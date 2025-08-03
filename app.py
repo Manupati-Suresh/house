@@ -8,7 +8,11 @@ st.title("🏠 House Price Prediction - Linear Regression")
 # Load model
 @st.cache_resource
 def load_model():
-    return pickle.load(open("linear_model.pkl", "rb"))
+    try:
+        return pickle.load(open("linear_model.pkl", "rb"))
+    except FileNotFoundError:
+        st.error("Model file not found. Please ensure linear_model.pkl is in the repository.")
+        st.stop()
 
 model = load_model()
 
