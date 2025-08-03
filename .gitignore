@@ -35,11 +35,11 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Model files (optional - you might want to track these)
-*.pkl
-*.joblib
-*.h5
-*.model
+# Model files (uncomment to exclude)
+# *.pkl
+# *.joblib
+# *.h5
+# *.model
 
 # Data files (optional - depends on your preference)
 *.csv
