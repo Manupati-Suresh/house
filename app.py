@@ -6,7 +6,11 @@ import pickle
 st.title("🏠 House Price Prediction - Linear Regression")
 
 # Load model
-model = pickle.load(open("linear_model.pkl", "rb"))
+@st.cache_resource
+def load_model():
+    return pickle.load(open("linear_model.pkl", "rb"))
+
+model = load_model()
 
 # Input fields - adapt to your actual model features
 area = st.number_input("Total Living Area (GrLivArea):", min_value=500, max_value=10000, value=1500)
