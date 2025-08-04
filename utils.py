@@ -137,14 +137,26 @@ def validate_input(area, bedrooms, garage):
     """Validate user input"""
     errors = []
     
-    if area < 500 or area > 5000:
-        errors.append("Living area must be between 500 and 5,000 sq ft")
+    try:
+        area = float(area)
+        if area < 500 or area > 5000:
+            errors.append("Living area must be between 500 and 5,000 sq ft")
+    except (ValueError, TypeError):
+        errors.append("Living area must be a valid number")
     
-    if bedrooms < 1 or bedrooms > 6:
-        errors.append("Number of bedrooms must be between 1 and 6")
+    try:
+        bedrooms = int(bedrooms)
+        if bedrooms < 1 or bedrooms > 6:
+            errors.append("Number of bedrooms must be between 1 and 6")
+    except (ValueError, TypeError):
+        errors.append("Number of bedrooms must be a valid integer")
     
-    if garage < 0 or garage > 4:
-        errors.append("Garage capacity must be between 0 and 4 cars")
+    try:
+        garage = int(garage)
+        if garage < 0 or garage > 4:
+            errors.append("Garage capacity must be between 0 and 4 cars")
+    except (ValueError, TypeError):
+        errors.append("Garage capacity must be a valid integer")
     
     return errors
 

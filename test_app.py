@@ -169,8 +169,15 @@ class TestErrorHandling(unittest.TestCase):
         """Test handling of invalid data types"""
         # Test with string inputs where numbers expected
         errors = validate_input("invalid", 3, 2)
-        # The function should handle this gracefully or we should add type checking
-        pass
+        self.assertGreater(len(errors), 0)
+        
+        # Test with invalid bedroom input
+        errors = validate_input(1500, "invalid", 2)
+        self.assertGreater(len(errors), 0)
+        
+        # Test with invalid garage input
+        errors = validate_input(1500, 3, "invalid")
+        self.assertGreater(len(errors), 0)
 
 def run_tests():
     """Run all tests"""
